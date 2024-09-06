@@ -12,7 +12,11 @@ class Animal():# this is our super class
         print('I can eat')
     def sleep(self):
         print('I can sleep')
-    
+    def sound(self):
+        print('Animal sound')
+
+
+animal = Animal()
 #derive a class dog 
 class Dog(Animal):
     def bark(self):
@@ -30,8 +34,12 @@ simba.bark()# calling from the dervived class
 class Cat(Animal):
     def meows(self):
         print('I can mew')
+    def sound(self):
+        print('A cat mews')
 
 kitty=Cat()
+animal.sound()
+kitty.sound()
 kitty.eat()
 kitty.sleep()
 kitty.meows()
@@ -43,3 +51,5 @@ Bruno=GermanShepard()
 Bruno.bark()
 Bruno.sleep() 
 Bruno.eat()
+
+

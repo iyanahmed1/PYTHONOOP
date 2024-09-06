@@ -16,7 +16,7 @@ class Library():
     #remove a book by isbn
     def remove_book(self,isbn):
         self.books=[ book for book in self.books if book.isbn != isbn]
-        
+    #find a book   
     def find_book(self,isbn):
         for book in self.books:
             if book.isbn == isbn:
@@ -32,14 +32,13 @@ def main():
         print('2. Please remove a book: ')
         print('3. Please find a book: ')
         print('4. Please List all books.')
-        choice=input('please enter your choice (1,2,3,4)')
+        print('5. Exit the system.')
+        choice=input('please enter your choice (1,2,3,4,5)')
         if choice=='1':
             title=input('please enter your title: ')
             author=input('please enter the author: ')
             isbn=input('Please enter the isbn: ')
             book=book(title,author,isbn)
             print('Book added')
+        elif choice=='2':
             
-
-
-
