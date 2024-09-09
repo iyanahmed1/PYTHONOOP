@@ -1,0 +1,15 @@
+Crime movies
+The Godfather:Crime
+Pulp Fiction:Crime
+
+ Highly ratings
+The Shawshank Redemption:9.3
+The Godfather:9.2
+The Dark Knight:9.0
+
+sorted_movies
+The Shawshank Redemption:9.3
+The Godfather:9.2
+The Dark Knight:9.0
+Pulp Fiction:8.9
+Fight Club:8.8

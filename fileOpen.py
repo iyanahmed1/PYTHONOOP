@@ -1,7 +1,9 @@
-"""fh=open('poem.txt','rt',encoding='UTF8')
-
-for line in fh.readlines():
-    print(line.strip())#Removes the trailing and preceding white scapes in the lines 
+try:
+    fh=open('poem.txt','rt',encoding='UTF8')
+    fh.write('This is just jiberish content')
+#for line in fh.readlines():
+ #   print(line.strip())#Removes the trailing and preceding white scapes in the lines 
+ 
 fh.close()
 
 #delete the file
@@ -16,4 +18,4 @@ try(
 
     else:
     print('File not found')
-)""""
+)
