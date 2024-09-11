@@ -25,3 +25,8 @@ session.commit()
 cust1=session.query(Person).filter(Person.name.like('%Bro%')).first
 
 print(cust1,cust1.addresses)
+def disp_info():
+    addresses=session.query((Address)).all()
+
+    for address in addresses:
+        print(f"{address.person }")
