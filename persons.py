@@ -28,8 +28,7 @@ class Address(Base):
     id=Column(Integer,primary_key=True)
     email=Column(String)
     person_id=Column(ForeignKey('person.id'))
-    person=relationship('Person',
-    back_populates='addresses')
+    person=relationship('Person',back_populates='addresses')
 def __str__(self):
     return self.email
 __repr__=__str__# used to assign the __str__ method to the __repr__ method of the Address class
