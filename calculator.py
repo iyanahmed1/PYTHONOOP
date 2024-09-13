@@ -16,7 +16,13 @@ def calculate():
     except Exception as e:
         display.delete(0,tk.END)
         display.insert(tk.END,'Error')
-
+        
+#theme selection between dark and light
+def theme_selector(theme):
+    if theme == 'dark':
+        root.configure(bg = '#000000')
+        display.configure(bg = '#55555', fg = 'fffff')
+    elif theme =='light'#finalize from here now
 #Create the main window. you can call it nythintg, for instance main, being its the first window
   
 root=tk.Tk()
