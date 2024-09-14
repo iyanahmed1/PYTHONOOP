@@ -86,12 +86,12 @@ for button in buttons:
         row += 1
 #define a function to allow users to use the keyboard instead of clicking on the buttons 
 def key_handler(event):
-    key=event.character
+    key=event.char
     if key in '012345678':
         button_click(key)
     elif key in '*/+_':
         button_click(key)
-    elif key in 'enter':
+    elif key in '/r':
         calculate()
     elif key == 'c':
         clear_display
