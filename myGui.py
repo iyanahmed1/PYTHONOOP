@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 class MyGUI:
     def __init__(self):
@@ -23,6 +24,9 @@ class MyGUI:
     #adding functionality
     def show_message(self):
         if self.check_state.get()==0:
-            print(self.textbox.)
+            print(self.textbox.get('1.0', tk.END))
+        else:
+            messagebox.showinfo(title='YESSS', message=self.textbox.get('1.0',tk.END))
+            
 
 MyGUI()
