@@ -91,7 +91,7 @@ def key_handler(event):
         button_click(key)
     elif key in '*/+_':
         button_click(key)
-    elif key in '/':
+    elif key in 'enter':
         calculate()
     elif key == 'c':
         clear_display
