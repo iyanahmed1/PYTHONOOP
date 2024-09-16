@@ -9,6 +9,37 @@
 #login, registartio and exit buttom
 
 import tkinter as tk
+import mysql.connector#this is for connection to the database
+
+#set up the database connection
+def connect_db():
+    return mysql.connector.connect(
+        host= 'Local host',
+        user=  'root'
+        
+    )
+
+#define the function to register the user
+def register_user():
+    user=userentry.get()
+    FName=fnameentry.get()
+    SName=surnameentry.get()
+    Email=emailentry.get()
+    Password=passwordentry.get()
+    Repassword=repeatpasswordentry.get()
+    Phone=phoneentry.get()
+
+    if Repassword!=Password:
+        print('Password Mismatch')
+
+    else:
+        print('Registration successful')
+
+
+
+
+
+
 root=tk.Tk()
 root.geometry('300x300')
 root.resizable(False,False)
@@ -63,7 +94,14 @@ phoneentry=tk.Entry(root)
 phoneentry.grid(row=4, column=1)
 
 login=tk.Button(root, text='login')
-login.grid(row=6, column=)
+login.grid(row=6, column=0)
+
+
+register=tk.Button(root, text='Register')
+register.grid(row=6, column=1)
+
+exit=tk.Button(root, text='Exit', command=exit)
+exit.grid(row=4, column=3)
 
 
 root.mainloop()
