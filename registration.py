@@ -10,15 +10,20 @@
 
 import tkinter as tk
 import mysql.connector#this is for connection to the database
+from mysql.connector import Error
 
 #set up the database connection
 def connect_db():
-    return mysql.connector.connect(
+    #to prevent the system from crassing
+    # enclose in a try finally block
+    try:
+        return mysql.connector.connect(
         host= 'Local host',
         user=  'root'
-        
-    )
 
+    )
+    except Error as e:
+        print(e)
 #define the function to register the user
 def register_user():
     user=userentry.get()
@@ -33,10 +38,15 @@ def register_user():
         print('Password Mismatch')
 
     else:
+        db=connect_db()
+        cursor=db.cursor()
+        sql='insert into registration(user,FName,SName,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s)'
+        val=(user,FName,SName,Email,Password,Phone)
+        cursor.execute(sql,val)
+        db.commit()
+        cursor.close()#close the database connection
+        db.close()
         print('Registration successful')
-
-
-
 
 
 
@@ -99,7 +109,7 @@ login=tk.Button(root, text='login')
 login.grid(row=7, column=0)
 
 
-register=tk.Button(root, text='Register')
+register=tk.Button(root, text='Register', command=register_user)
 register.grid(row=7, column=1)
 
 exit=tk.Button(root, text='Exit', command=exit)
