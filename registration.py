@@ -87,21 +87,23 @@ repeatpasswordentry=tk.Entry(root)
 repeatpasswordentry.grid(row=5, column=1)
 
 #phone number 
-phone=tk.Label(root, text='Password')
-phone.grid(row=4, column=0)
+phone=tk.Label(root, text='Phone Number')
+phone.grid(row=6, column=0)
 
 phoneentry=tk.Entry(root)
-phoneentry.grid(row=4, column=1)
+phoneentry.grid(row=6, column=1)
+
+# create a frame to hold the buttons
 
 login=tk.Button(root, text='login')
-login.grid(row=6, column=0)
+login.grid(row=7, column=0)
 
 
 register=tk.Button(root, text='Register')
-register.grid(row=6, column=1)
+register.grid(row=7, column=1)
 
 exit=tk.Button(root, text='Exit', command=exit)
-exit.grid(row=4, column=3)
+exit.grid(row=7, column=2)
 
 
 root.mainloop()

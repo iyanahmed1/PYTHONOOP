@@ -5,9 +5,14 @@ root.resizable(False,False)
 root.title('Login Form')
 
 def exit():
+    """
+    Closes the main window and exits the program.
+
+    This function is called by the 'Exit' button.
+    """
     root.destroy()
 
-
+#username and password field
 title=tk.Label(root, text='Please enter your username and password to login')
 title.grid(row=0, column=0, columnspan=2)
 
@@ -24,14 +29,11 @@ passwordentry=tk.Entry(root)
 passwordentry.grid(row=2, column=1)
 
 login=tk.Button(root, text='login')
-login.grid(row=6, column=)
+login.grid(row=3, column=0)
 
-login=tk.Button(root, text='login')
-login.grid(row=6, column=)
+register=tk.Button(root, text='register')
+register.grid(row=3, column=1)
 
-register=tk.Button(root, text='login')
-register.grid(row=6, column=)
-
-exit=tk.Button(root, text='Exit' command=exit)
-exit.grid(row=4, column=3)
+exit=tk.Button(root, text='Exit', command=exit)
+exit.grid(row=3, column=2)
 root.mainloop()
