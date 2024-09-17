@@ -18,9 +18,9 @@ def connect_db():
     # enclose in a try finally block
     try:
         return mysql.connector.connect(
-        host= 'Local host',
-        user=  'root'
-
+        host= 'localhost',
+        user=  'root' ,
+        database= 'retail'
     )
     except Error as e:
         print(e)
