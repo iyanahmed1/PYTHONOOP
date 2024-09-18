@@ -9,21 +9,12 @@
 #login, registartio and exit buttom
 
 import tkinter as tk
-import mysql.connector#this is for connection to the database
+from tkinter import messagebox
+from dbconnect import connect_db
 from mysql.connector import Error
 
 #set up the database connection
-def connect_db():
-    #to prevent the system from crassing
-    # enclose in a try finally block
-    try:
-        return mysql.connector.connect(
-        host= 'localhost',
-        user=  'root' ,
-        database= 'retail'
-    )
-    except Error as e:
-        print(e)
+
 #define the function to register the user
 def register_user():
     user=userentry.get()
@@ -35,19 +26,22 @@ def register_user():
     Phone=phoneentry.get()
 
     if Repassword!=Password:
-        print('Password Mismatch')
+        messagebox.showerror('Password Error',f'Password Mismatch')
 
     else:
-        db=connect_db()
-        cursor=db.cursor()
-        sql='insert into registration(user,FName,SName,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s)'
-        val=(user,FName,SName,Email,Password,Phone)
-        cursor.execute(sql,val)
-        db.commit()
-        cursor.close()#close the database connection
-        db.close()
-        print('Registration successful')
-
+        try:
+            db=connect_db()
+            cursor=db.cursor()
+            sql='insert into registration(user,FName,SName,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s)'
+            val=(user,FName,SName,Email,Password,Phone)
+            cursor.execute(sql,val)
+            db.commit()
+            messagebox.showinfo('Success','Registration Successful')
+        except Error as e:
+            messagebox.showerror('Database Error',f'Data Could not be saved!')
+            cursor.close()#close the database connection
+        finally:
+            db.close()
 
 
 root=tk.Tk()
