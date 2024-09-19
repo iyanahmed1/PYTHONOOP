@@ -119,27 +119,27 @@ phoneentry.grid(row=6, column=1)
 gender_var=tk.StringVar()
 gender_var.set(None)
 gender_label=tk.Label(root, text='Gender')
-gender_label.grid(row=8,column=0)
+gender_label.grid(row=7,column=0)
 
 male=tk.Radiobutton(root, text='Male', variable=gender_var, value='Male')
-male.grid(row=8, column=1)
+male.grid(row=7, column=1)
 
 female=tk.Radiobutton(root, text='Female', variable=gender_var, value='Female')
-female.grid(row=8, column=2)
+female.grid(row=7, column=2)
 
 rathernotsay=tk.Radiobutton(root, text='Rather Not Say', variable=gender_var, value='Rather not say')
-rathernotsay.grid(row=8, column=3)
+rathernotsay.grid(row=7, column=3)
 # create a frame to hold the buttons
 
 login=tk.Button(root, text='login')
-login.grid(row=7, column=0)
+login.grid(row=8, column=0)
 
 
 register=tk.Button(root, text='Register', command=register_user)
-register.grid(row=7, column=1)
+register.grid(row=8, column=1)
 
 exit=tk.Button(root, text='Exit', command=exit)
-exit.grid(row=7, column=2)
+exit.grid(row=8, column=2)
 
 
 root.mainloop()
