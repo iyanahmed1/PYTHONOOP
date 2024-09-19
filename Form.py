@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import mysql.connector 
 from mysql.connector import Error
 from tkinter import messagebox
@@ -23,7 +24,7 @@ def register_person():
     Lastname=Lnameentry.get()
     Email=emailentry.get()
     Mobile=mobileentry.get()
-    Gender=gender.get()
+    Gender=gender_var()
     dob=f"{dob_day.get()},{dob_month.get()},{dob_year.get()}"
     password=passwordentry.get()
     confirm_password=confirmpassentry.get()
@@ -48,7 +49,7 @@ def register_person():
 
 #creating the window
 root=tk.Tk()
-root.geometry('600x400')
+root.geometry('700x400')
 root.resizable(False,False)
 root.title('Registration Form')
 root.configure(bg='light grey')
@@ -100,15 +101,19 @@ gender.grid(row=4 , column=2, pady=10, padx=10)
 dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
 dob.grid(row=5 ,column=0, pady=10, padx=10)
 
-dob_day=tk.Entry(root)
+day=[str(i)for i in range(1,32)]
+dob_day=ttk.Combobox(root,values=day)
 dob_day.grid(row=5 ,column=1, pady=10, padx=10)
 
-
-dob_month=tk.Entry(root)
+month=[str(i)for i in range(1,13)]
+dob_month=ttk.Combobox(root, values=month)
 dob_month.grid(row=5,column=2 ,pady=10, padx=10)
 
-dob_year=tk.Entry(root)
+year=[str(i) for i in range(1900, 2025)]
+dob_year=ttk.Combobox(root, values=year)
 dob_year.grid(row=5,column=3, pady=10, padx=10)
+
+
 
 #password
 password=tk.Label(root,text='Password',bg='light grey',fg='black')
@@ -129,3 +134,5 @@ submit=tk.Button(root, text='SUBMIT', font=("Arial",8) ,bg='Red' ,fg= 'black', c
 submit.grid(row=8 ,column=1, pady=10, padx=10)
 
 root.mainloop()
+
+

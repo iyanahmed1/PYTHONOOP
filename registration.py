@@ -10,7 +10,8 @@
 
 import tkinter as tk
 from tkinter import messagebox
-from tkcalendar import Calendar
+from tkinter import ttk
+#from tkcalendar import Calendar
 from validate_email import validate_email
 from dbconnect import connect_db
 from mysql.connector import Error
@@ -26,7 +27,7 @@ def register_user():
     Password=passwordentry.get()
     Repassword=repeatpasswordentry.get()
     Gender=gender_var()
-    dob=f"{dob_day.get()},{dob_month.get()},{dob_year.get()}
+    dob=(f"{dob_day.get()},{dob_month.get()},{dob_year.get()}")
     Phone=phoneentry.get()
 
     if Repassword!=Password:
@@ -40,8 +41,8 @@ def register_user():
         try:
             db=connect_db()
             cursor=db.cursor()
-            sql='insert into registration(user,FName,SName,Gender,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s,%s)'
-            val=(user,FName,SName,Gender,Email,Password,Phone)
+            sql='insert into registration(user,FName,SName,dob,Gender,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s,%s,%s)'
+            val=(user,FName,SName,Gender,dob,Email,Password,Phone)
             cursor.execute(sql,val)
             db.commit()
             result=messagebox.askquestion('Registration Successful','Add new record?')
@@ -93,14 +94,17 @@ surnameentry.grid(row=2, column=1)
 dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
 dob.grid(row=3 ,column=0, pady=10, padx=10)
 
-dob_day=tk.Entry(root)
+day=[str(i)for i in range(1,32)]
+dob_day=ttk.Combobox(root,values=day)
 dob_day.grid(row=3 ,column=1, pady=10, padx=10)
 
 
-dob_month=tk.Entry(root)
+month=[str(i)for i in range(1,13)]
+dob_month=ttk.Combobox(root,values=month)
 dob_month.grid(row=3,column=2 ,pady=10, padx=10)
 
-dob_year=tk.Entry(root)
+year=[str(i)for i in range(1900,2025)]
+dob_year=ttk.Combobox(root,values=year)
 dob_year.grid(row=3,column=3, pady=10, padx=10)
 
 
@@ -146,12 +150,6 @@ phone.grid(row=8, column=0)
 
 phoneentry=tk.Entry(root)
 phoneentry.grid(row=8, column=1)
-
-#date of birth
-#dob=tk.Label(root, text=' Date Of Birth')
-#dob.grid(row=10, column=0)
-#dob=Calendar(root)
-
 
 # create a frame to hold the buttons
 
