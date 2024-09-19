@@ -7,7 +7,7 @@ from tkinter import messagebox
 
 def connect_db():
     try:
-        return mysql.connector(
+        return mysql.connector.connect(
             host='localhost',
             user='root',
             database='Form'
