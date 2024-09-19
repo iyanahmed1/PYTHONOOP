@@ -10,6 +10,7 @@
 
 import tkinter as tk
 from tkinter import messagebox
+from validate_email import validate_email
 from dbconnect import connect_db
 from mysql.connector import Error
 
@@ -23,10 +24,16 @@ def register_user():
     Email=emailentry.get()
     Password=passwordentry.get()
     Repassword=repeatpasswordentry.get()
+    #Gender=gender.get()
+    #dob
     Phone=phoneentry.get()
 
     if Repassword!=Password:
         messagebox.showerror('Password Error',f'Password Mismatch')
+    elif len(Password)<8:
+        messagebox.showerror('Password error',f'Password too short')
+    elif validate_email(Email)==False:
+        messagebox.showinfo('invalid Email',f'Invalid Email. Try again')
 
     else:
         try:
@@ -36,7 +43,18 @@ def register_user():
             val=(user,FName,SName,Email,Password,Phone)
             cursor.execute(sql,val)
             db.commit()
-            messagebox.showinfo('Success','Registration Successful')
+            result=messagebox.askquestion('Registration Successful','Add new record?')
+            if result=='no':
+                root.destroy()
+            else:
+                userentry.destroy(0,tk.END)
+                fnameentry.destroy(0,tk.END)
+                surnameentry.destroy(0,tk.END)
+                emailentry.destroy(0,tk.END)
+                passwordentry.destroy(0,tk.END)
+                repeatpasswordentry.destroy(0,tk.END)
+                phoneentry.destroy(0,tk.END)
+
         except Error as e:
             messagebox.showerror('Database Error',f'Data Could not be saved!')
             cursor.close()#close the database connection
@@ -96,6 +114,15 @@ phone.grid(row=6, column=0)
 
 phoneentry=tk.Entry(root)
 phoneentry.grid(row=6, column=1)
+
+#gender
+gender_var=tk.StringVar()
+gender_var.set(None)
+gender_label=tk.Label(root, text='Gender')
+gender_label.grid(row=8,column=0)
+
+male=tk.Radiobutton(root, text='Male', variable=gender_var, value='Male')
+male.grid(row=8, column=1)
 
 # create a frame to hold the buttons
 

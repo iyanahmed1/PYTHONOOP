@@ -41,7 +41,7 @@ def register_person():
             db.commit()
             messagebox.showinfo('Successful',f'Registration Successful')
         except Error as er:
-            messagebox.showerror('Unsuccessful',f'Registration Unsucceful')
+            messagebox.showerror('Unsuccessful',f'Registration Unsucceful:{er}')
             cursor.close()
         finally:
             db.close()
@@ -75,7 +75,7 @@ email=tk.Label(root,text='Email',bg='light grey',fg='black')
 email.grid(row=2, column=0, pady=10, padx=10)
 
 emailentry=tk.Entry(root)
-emailentry.grid(row=2, column=1, pady=10, padx=10)
+emailentry.grid(row=2, column=1,pady=10, padx=10)
 
 #mobile
 mobile=tk.Label(root, text='Mobile',bg='light grey',fg='black')
@@ -89,11 +89,11 @@ gender=tk.StringVar
 gender=tk.Label(root, text='Gender',bg='light grey',fg='black')
 gender.grid(row=4, column=0, pady=10, padx=10)
 
-genderentry=tk.Radiobutton(root, text='male', variable=gender, value='Male',bg='light grey',fg='black')
-genderentry.grid(row=4, column=1, pady=10, padx=10)
+gender=tk.Radiobutton(root, text='male', variable=gender, value='Male',bg='light grey',fg='black')
+gender.grid(row=4, column=1, pady=10, padx=10)
 
-genderentry=tk.Radiobutton(root, text='Female', variable=gender, value='Female',bg='light grey',fg='black')
-genderentry.grid(row=4 , column=2, pady=10, padx=10)
+gender=tk.Radiobutton(root, text='Female', variable=gender, value='Female',bg='light grey',fg='black')
+gender.grid(row=4 , column=2, pady=10, padx=10)
 
 #date of birth
 dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
