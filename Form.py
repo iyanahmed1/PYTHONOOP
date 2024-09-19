@@ -24,7 +24,7 @@ def register_person():
     Email=emailentry.get()
     Mobile=mobileentry.get()
     Gender=gender.get()
-    dob=dobentry.get()
+    dob=f"{dob_day.get()},{dob_month.get()},{dob_year.get()}"
     password=passwordentry.get()
     confirm_password=confirmpassentry.get()
 
@@ -85,22 +85,30 @@ mobileentry=tk.Entry(root)
 mobileentry.grid(row=3,column=1, pady=10, padx=10)
 
 #gender
-gender=tk.StringVar
+gender_var=tk.StringVar()
+gender_var.set(None)
 gender=tk.Label(root, text='Gender',bg='light grey',fg='black')
 gender.grid(row=4, column=0, pady=10, padx=10)
 
-gender=tk.Radiobutton(root, text='male', variable=gender, value='Male',bg='light grey',fg='black')
+gender=tk.Radiobutton(root, text='male', variable=gender_var, value='Male',bg='light grey',fg='black')
 gender.grid(row=4, column=1, pady=10, padx=10)
 
-gender=tk.Radiobutton(root, text='Female', variable=gender, value='Female',bg='light grey',fg='black')
+gender=tk.Radiobutton(root, text='Female', variable=gender_var, value='Female',bg='light grey',fg='black')
 gender.grid(row=4 , column=2, pady=10, padx=10)
 
 #date of birth
 dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
 dob.grid(row=5 ,column=0, pady=10, padx=10)
 
-dobentry=tk.Entry(root)
-dobentry.grid(row=5 ,column=1, pady=10, padx=10)
+dob_day=tk.Entry(root)
+dob_day.grid(row=5 ,column=1, pady=10, padx=10)
+
+
+dob_month=tk.Entry(root)
+dob_month.grid(row=5,column=2 ,pady=10, padx=10)
+
+dob_year=tk.Entry(root)
+dob_year.grid(row=5,column=3, pady=10, padx=10)
 
 #password
 password=tk.Label(root,text='Password',bg='light grey',fg='black')

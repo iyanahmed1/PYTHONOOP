@@ -9,3 +9,4 @@ class Patient():
         print(f'Name{self.name},Age{self.age},Patient_id{self.patient_id},Ailment{self.ailment},Admitted{'Yes'if self.admitted else 'No'}')
 class Hospital():
     def __init__(self):
+        

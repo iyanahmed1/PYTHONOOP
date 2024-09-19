@@ -10,6 +10,7 @@
 
 import tkinter as tk
 from tkinter import messagebox
+from tkcalendar import Calendar
 from validate_email import validate_email
 from dbconnect import connect_db
 from mysql.connector import Error
@@ -24,8 +25,8 @@ def register_user():
     Email=emailentry.get()
     Password=passwordentry.get()
     Repassword=repeatpasswordentry.get()
-    #Gender=gender.get()
-    #dob
+    Gender=gender_var()
+    dob=f"{dob_day.get()},{dob_month.get()},{dob_year.get()}
     Phone=phoneentry.get()
 
     if Repassword!=Password:
@@ -39,8 +40,8 @@ def register_user():
         try:
             db=connect_db()
             cursor=db.cursor()
-            sql='insert into registration(user,FName,SName,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s)'
-            val=(user,FName,SName,Email,Password,Phone)
+            sql='insert into registration(user,FName,SName,Gender,Email,Password,Phone) values(%s,%s,%s,%s,%s,%s,%s)'
+            val=(user,FName,SName,Gender,Email,Password,Phone)
             cursor.execute(sql,val)
             db.commit()
             result=messagebox.askquestion('Registration Successful','Add new record?')
@@ -54,6 +55,7 @@ def register_user():
                 passwordentry.destroy(0,tk.END)
                 repeatpasswordentry.destroy(0,tk.END)
                 phoneentry.destroy(0,tk.END)
+                gender_var.set(None)
 
         except Error as e:
             messagebox.showerror('Database Error',f'Data Could not be saved!')
@@ -87,59 +89,81 @@ surname.grid(row=2, column=0)
 surnameentry=tk.Entry(root)
 surnameentry.grid(row=2, column=1)
 
-#email
-email=tk.Label(root, text='email ')
-email.grid(row=3, column=0)
+#date of birth
+dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
+dob.grid(row=3 ,column=0, pady=10, padx=10)
 
-emailentry=tk.Entry(root)
-emailentry.grid(row=3, column=1)
+dob_day=tk.Entry(root)
+dob_day.grid(row=3 ,column=1, pady=10, padx=10)
 
-#password
-password=tk.Label(root, text='Password')
-password.grid(row=4, column=0)
 
-passwordentry=tk.Entry(root)
-passwordentry.grid(row=4, column=1)
+dob_month=tk.Entry(root)
+dob_month.grid(row=3,column=2 ,pady=10, padx=10)
 
-#repeat password
-repeatpassword=tk.Label(root, text='Repeat Password')
-repeatpassword.grid(row=5, column=0)
+dob_year=tk.Entry(root)
+dob_year.grid(row=3,column=3, pady=10, padx=10)
 
-repeatpasswordentry=tk.Entry(root)
-repeatpasswordentry.grid(row=5, column=1)
-
-#phone number 
-phone=tk.Label(root, text='Phone Number')
-phone.grid(row=6, column=0)
-
-phoneentry=tk.Entry(root)
-phoneentry.grid(row=6, column=1)
 
 #gender
 gender_var=tk.StringVar()
 gender_var.set(None)
 gender_label=tk.Label(root, text='Gender')
-gender_label.grid(row=7,column=0)
+gender_label.grid(row=4,column=0)
 
 male=tk.Radiobutton(root, text='Male', variable=gender_var, value='Male')
-male.grid(row=7, column=1)
+male.grid(row=4, column=1)
 
 female=tk.Radiobutton(root, text='Female', variable=gender_var, value='Female')
-female.grid(row=7, column=2)
+female.grid(row=4, column=2)
 
 rathernotsay=tk.Radiobutton(root, text='Rather Not Say', variable=gender_var, value='Rather not say')
-rathernotsay.grid(row=7, column=3)
+rathernotsay.grid(row=4, column=3)
+
+#email
+email=tk.Label(root, text='email ')
+email.grid(row=5, column=0)
+
+emailentry=tk.Entry(root)
+emailentry.grid(row=5, column=1)
+
+#password
+password=tk.Label(root, text='Password')
+password.grid(row=6, column=0)
+
+passwordentry=tk.Entry(root)
+passwordentry.grid(row=6, column=1)
+
+#repeat password
+repeatpassword=tk.Label(root, text='Repeat Password')
+repeatpassword.grid(row=7, column=0)
+
+repeatpasswordentry=tk.Entry(root)
+repeatpasswordentry.grid(row=7, column=1)
+
+#phone number 
+phone=tk.Label(root, text='Phone Number')
+phone.grid(row=8, column=0)
+
+phoneentry=tk.Entry(root)
+phoneentry.grid(row=8, column=1)
+
+#date of birth
+#dob=tk.Label(root, text=' Date Of Birth')
+#dob.grid(row=10, column=0)
+#dob=Calendar(root)
+
+
 # create a frame to hold the buttons
 
 login=tk.Button(root, text='login')
-login.grid(row=8, column=0)
+login.grid(row=9, column=0)
 
 
 register=tk.Button(root, text='Register', command=register_user)
-register.grid(row=8, column=1)
+register.grid(row=9, column=1)
 
 exit=tk.Button(root, text='Exit', command=exit)
-exit.grid(row=8, column=2)
+exit.grid(row=9, column=2)
 
 
 root.mainloop()
