@@ -63,7 +63,7 @@ def register_user():
 
 
 root=tk.Tk()
-root.geometry('300x300')
+root.geometry('400x300')
 root.resizable(False,False)
 root.title('Registration Form')
 #username(label) and userenter (textbox)
@@ -124,6 +124,11 @@ gender_label.grid(row=8,column=0)
 male=tk.Radiobutton(root, text='Male', variable=gender_var, value='Male')
 male.grid(row=8, column=1)
 
+female=tk.Radiobutton(root, text='Female', variable=gender_var, value='Female')
+female.grid(row=8, column=2)
+
+rathernotsay=tk.Radiobutton(root, text='Rather Not Say', variable=gender_var, value='Rather not say')
+rathernotsay.grid(row=8, column=3)
 # create a frame to hold the buttons
 
 login=tk.Button(root, text='login')
