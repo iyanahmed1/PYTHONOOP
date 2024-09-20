@@ -66,7 +66,7 @@ def register_user():
 
 
 root=tk.Tk()
-root.geometry('400x300')
+root.geometry('600x300')
 root.resizable(False,False)
 root.title('Registration Form')
 #username(label) and userenter (textbox)
@@ -91,7 +91,7 @@ surnameentry=tk.Entry(root)
 surnameentry.grid(row=2, column=1)
 
 #date of birth
-dob=tk.Label(root ,text='Date of Birth',bg='light grey',fg='black')
+dob=tk.Label(root ,text='Date of Birth')
 dob.grid(row=3 ,column=0, pady=10, padx=10)
 
 day=[str(i)for i in range(1,32)]

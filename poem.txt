@@ -13,17 +13,3 @@ It bridges gaps, it intertwines,
 With modules rich and libraries vast,  
 It shapes the future from the past.
 
-In loops and lists, in functions pure,  
-It solves the riddles, makes them sure,  
-The 'def' and 'class', the 'import' too,  
-In Python’s world, the sky’s the hue.
-
-For data’s dance, for web’s embrace,  
-For science bold, it finds its place,  
-A language built to understand,  
-To craft and build with skillful hand.
-
-O Python, with your grace so fine,  
-You turn the complex into rhyme,  
-In every line, your spirit sings,  
-A symphony of logic’s wings.
