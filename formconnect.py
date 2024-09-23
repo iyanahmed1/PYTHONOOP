@@ -10,3 +10,6 @@ def connect_db():
         )
     except Error as e:
         messagebox.showerror('Database Failed',f'Database Connection')
+
+
+        
