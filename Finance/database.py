@@ -1,3 +1,5 @@
+# why import mysql?
+
 from tkinter import messagebox
 import mysql
 import mysql.connector
